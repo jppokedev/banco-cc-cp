@@ -1,9 +1,9 @@
 package entities;
 
-public class Conta {
+public abstract class Conta {
 
 	private String nome;
-	private Double saldo = 0.0;
+	protected Double saldo = 0.0;
 	private Integer numConta;
 	private static Integer total = 0;
 	
@@ -16,9 +16,7 @@ public class Conta {
 		
 	}
 	
-	public void deposite(Double valor) {
-		this.saldo += valor;
-	}
+	public abstract void deposite(Double valor);
 	
 	public Boolean saque (Double valor) {
 		if (this.saldo >= valor) {
@@ -31,7 +29,7 @@ public class Conta {
 	
 	public Boolean tranferir (Double valor, Conta destino) {
 		if (this.saque(valor)){
-			destino.deposite(valor);
+			//destino.deposite(valor);
 			return true;
 		}else {
 			return false;

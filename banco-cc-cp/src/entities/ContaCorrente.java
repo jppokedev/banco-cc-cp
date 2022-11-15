@@ -6,10 +6,16 @@ public class ContaCorrente extends Conta {
 		super(saldo, numConta, nome);
 	}
 	
-//	@Override
-//	public Boolean saque(Double valor) {
-//		Double valorASaque = valor + 0.2;
-//		return super.saque(valorASaque);
-//	}
+	@Override
+	public Boolean saque(Double valor) {
+		Double valorASaque = valor + 0.2;
+		return super.saque(valorASaque);
+	}
+
+	@Override
+	public void deposite(Double valor) {
+		super.saldo += valor;
+		
+	}
 	
 }
