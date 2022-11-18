@@ -1,0 +1,16 @@
+package entities;
+
+public class CalculadorImpostos {
+
+	private double totalImposto;
+	
+	public void regista (Tributavel t) {
+		double valor = t.getValorImposto();
+		this.totalImposto += valor;
+	}
+	
+	public double getTotalImposto() {
+		return totalImposto;
+	}
+	
+}
