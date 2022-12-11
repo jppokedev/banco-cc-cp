@@ -1,9 +1,11 @@
 package entities;
 
-public abstract class Conta {
+import exceptions.SaldoExceptions;
 
-	private String nome;
+public abstract class Conta {
+	
 	protected Double saldo = 0.0;
+	private String nome;
 	private Integer numConta;
 	private static Integer total = 0;
 	
@@ -18,22 +20,15 @@ public abstract class Conta {
 	
 	public abstract void deposite(Double valor);
 	
-	public Boolean saque (Double valor) {
-		if (this.saldo >= valor) {
-			this.saldo -= valor;
-			return true;
-		}else {
-			return false;
+	public void saque (Double valor) throws SaldoExceptions {
+		if(this.saldo < valor) {
+			throw new SaldoExceptions("SALDO INSUFICIENTE. Saldo atual e de: "+ this.getSaldo() + " Valor que foi tentado sacar e de: "+ valor);
 		}
-	}	
+	}
 	
-	public Boolean tranferir (Double valor, Conta destino) {
-		if (this.saque(valor)){
-			//destino.deposite(valor);
-			return true;
-		}else {
-			return false;
-		}
+	public void tranferir (Double valor, Conta destino) throws SaldoExceptions {
+		this.saque(valor);
+		destino.deposite(valor);
 	}
 		
 	public String getNome() {

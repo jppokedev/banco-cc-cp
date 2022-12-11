@@ -1,5 +1,7 @@
 package entities;
 
+import exceptions.SaldoExceptions;
+
 public class ContaPoupaca extends Conta {
 
 	public ContaPoupaca(Double saldo, Integer numConta, String nome) {
@@ -7,9 +9,9 @@ public class ContaPoupaca extends Conta {
 	}
 	
 	@Override
-	public Boolean saque(Double valor) {
+	public void saque(Double valor) throws SaldoExceptions {
 		Double valorASaque = valor + 0.1;
-		return super.saque(valorASaque);
+		super.saque(valorASaque);
 	}
 
 	@Override
