@@ -17,6 +17,8 @@ public class Banco {
 			cc.tranferir(25.0, cp);
 		} catch (SaldoExceptions ex) {
 			ex.getMessage();
+		} finally {
+			System.out.println("Deu uma exception");
 		}
 		
 		System.out.println();
